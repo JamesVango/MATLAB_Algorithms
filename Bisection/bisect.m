@@ -14,12 +14,16 @@ function [root,fx,ea,iter] = bisect(func,xl,xu,es,maxit,varargin)
 %   ea = approximate relative error (%)
 %   iter = number of iterations
 
+%%Part 1: Check for Minimum number of arguments, check for points on both sides of
+%%root using sign multipliers. If iterations or error are not specified by
+%%user, input them manually
 if nargin<3,error('at least 3 input arguments required'),end
 test = func(xl,varargin{:}) * func(xu,varargin{:});
 if test>0,error('no sign change'),end
 if nargin<4|isempty(es), es = 0.0001;end
 if nargin<5|isempty(maxit), maxit = 50;end
 iter = 0; xr = xl; ea = 100;
+%%Part 2: Begin actual bisection methods
 while (1)
   xrold = xr;
   xr = (xl + xu)/2;
