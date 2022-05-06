@@ -7,8 +7,6 @@ y = y-values for our data set
 
 EX linearRegression(x,y)
 
-lufactor(A)
-
 ## Outputs:
 fX = x-values with outliers removed
 fY = y-values with outliers removed
